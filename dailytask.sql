@@ -5,10 +5,10 @@ constraint number_cq check (number in(1,0)),
 constraint completed_on_cq check (completed_on <= deadline)
 );
 
-insert into daily_task (status,task,done_by,deadline,compleated_on,priority) values (0,dailyTask1,soundarya,
+insert into daily_task (status,task,done_by,deadline,compleated_on,priority) values (0,'dailyTask1','soundarya',
 to_date('28-12-2019','dd-MM-yyyy'),to_date('27-12-2019','dd-MM-yyyy'),1);
 
-insert into daily_task (status,task,done_by,deadline,priority) values (0,dailyTask2,nandhu,
+insert into daily_task (status,task,done_by,deadline,priority) values (0,'dailyTask2','nandhu',
 to_date('28-12-2019','dd-MM-yyyy'),3);
 
 update daily_task set status=1 where compleated_on != NULL;
