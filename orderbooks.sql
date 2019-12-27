@@ -44,3 +44,42 @@ update orders set delivered_date=current_timestamp, status='delivered' where o_i
 select count(delivered_date) as sales_count from orders where status='delivered';
 
 select * from orders;
+                           
+create table order_items (
+item_id number not null,or_id number not null,b_id number not null,quantity number  default 1,status varchar2(20) not null,
+constraint quantity_cq check (quantity>=1),
+constraint bk_id_fk foreign key(b_id) references books(b_id),
+constraint or_id_fkey foreign key(or_id) references orders(o_id),
+constraint item_id_pk primary key (item_id)
+);
+
+drop table order_items;
+
+insert into order_items (item_id,or_id,b_id,quantity,status) values (1,287,028,3,'ordered');
+
+insert into order_items (item_id,or_id,b_id,quantity,status) values (2,73,007,5,'ordered');
+
+select * from order_items;
+
+create table books_stock (
+stock_id number not null,bo_id number not null,qnty number,
+constraint bo_id_fk foreign key(bo_id) references books(b_id),
+constraint stock_id_pk primary key (stock_id)
+);
+
+insert into books_stock (stock_id,bo_id,qnty) values (1,028,10);
+
+insert into books_stock (stock_id,bo_id,qnty) values (2,007,5);
+
+select * from books_stock;
+
+select b_name,(select qnty from books_stock where bo_id=b.b_id) as book_count from books b;
+
+select b_name,(select sum(quantity) from order_items where b_id =b.b_id) as no_of_qnty_ordered from books b;
+
+select b_name,(
+(select sum(qnty) from books_stock where bo_id=b.b_id)-
+(select sum(quantity) from order_items where b_id =b.b_id)
+)as available_stocks 
+from books b;
+
