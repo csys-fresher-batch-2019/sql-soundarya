@@ -11,7 +11,6 @@ insert into books (b_id,b_name,a_name,price,publisher,version,category,active) v
 
 insert into books (b_id,b_name,a_name,price,publisher,version,category) values (007,'java','xxx',700,'yyy',7,'theory');
 
-
 select * from books;
 
 create table orders(
@@ -34,8 +33,9 @@ constraint unq unique (u_name,b_id,ordered_date)
 insert into orders (o_id,u_name,b_id,ordered_date,total_amt,qty,status,comments) values 
 (287,'sound',028,current_timestamp,2700,2,'ordered','xxxxyyyy');
 
-
 insert into orders (o_id,u_name,b_id,ordered_date,total_amt,comments) values 
 (73,'mala',007,current_timestamp,700,'xxxxyyyy');
+
+update orders set delivered_date=current_timestamp ,status='delivered' where o_id=287;
 
 select * from orders;
