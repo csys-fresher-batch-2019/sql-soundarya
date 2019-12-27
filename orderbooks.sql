@@ -11,19 +11,31 @@ insert into books (b_id,b_name,a_name,price,publisher,version,category,active) v
 
 insert into books (b_id,b_name,a_name,price,publisher,version,category) values (007,'java','xxx',700,'yyy',7,'theory');
 
+
+select * from books;
+
 create table orders(
-o_id number,u_name varchar2(30) not null,b_id number not null,ordered_date timestamp  default sysdate not null,delivered_date timestamp,
-total_amt number not null,qty number default 1,status varchar(20) default 'ordered',comments varchar(100)
+o_id number,
+u_name varchar2(30) not null,
+b_id number not null,
+ordered_date timestamp  not null,
+delivered_date timestamp,
+total_amt number not null,
+qty number default 1,
+status varchar(20) default 'ordered',
+comments varchar(100),
 constraint o_id_pk primary key (o_id),
 constraint b_id_fk foreign key(b_id) references books(b_id),
 constraint total_amt_cq check (total_amt >=0),
 constraint qty_cq check (qty >=1),
-constraint unq unique (u_name,b_id,ordered_date);
+constraint unq unique (u_name,b_id,ordered_date)
 );
 
 insert into orders (o_id,u_name,b_id,ordered_date,total_amt,qty,status,comments) values 
-(287,'sound',028,to_timestamp(current_timestamp),2700,2,'ordered','xxxxyyyy');
+(287,'sound',028,current_timestamp,2700,2,'ordered','xxxxyyyy');
 
-insert into orders (o_id,u_name,b_id,ordered_date,total_amt,qty,status,comments) values 
+
+insert into orders (o_id,u_name,b_id,ordered_date,total_amt,comments) values 
 (73,'mala',007,current_timestamp,700,'xxxxyyyy');
 
+select * from orders;
