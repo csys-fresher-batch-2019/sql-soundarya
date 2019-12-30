@@ -56,6 +56,8 @@ select b.b_name,b.price,o.ordered_date from books b full outer join orders o on 
 
 select * from books,orders;
 
+select b1.b_name,b2.version from books b1 join books b2 on b.b_id=o.b_id;
+
 
 
 
