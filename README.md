@@ -65,6 +65,15 @@ insert into friend_request (user1_id,user2_id,current_status,action_performed_by
 
 select * from friend_request where (user1_id = 1 or user2_id = 1) and current_status = 'accepted';
 ```
+### table 2
+
+* friend_request
+
+| user1_id | user2_id | current_status | action_performed_by |
+|----------|----------|----------------|---------------------|
+| 1        | 3        | accepted       | 3                   |
+| 1        | 2        | blocked        | 1                   |
+
 ### Feature 3:Posts posted by the user
 ```sql
 create table posts(
@@ -87,3 +96,12 @@ insert into posts (post_id,User_id,post_type,caption,date_created) values (202,2
 
 select * from posts;
 ```
+### table 3
+
+* posts
+
+| post_id | user_id | post_type | caption         | date_created                 | date_updated |
+|---------|---------|-----------|-----------------|------------------------------|--------------|
+| 201     | 1       | image     | have a nice day | 31-DEC-19 01.19.55.103225 AM |  -           |
+| 202     | 2       | video     | happy morning   | 31-DEC-19 01.21.03.888304 AM |  -           |
+
