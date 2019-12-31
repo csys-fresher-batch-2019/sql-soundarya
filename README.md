@@ -92,14 +92,16 @@ insert into posts (post_id,User_id,post_type,caption,date_created) values (201,1
 
 insert into posts (post_id,User_id,post_type,caption,date_created) values (202,2,'video','happy morning',current_timestamp);
 
+update posts set date_updated = current_timestamp,caption='hello' where post_id=201;
+
 select * from posts;
 ```
 ### table 3
 
 * posts
 
-| post_id | user_id | post_type | caption         | date_created                 | date_updated |
-|---------|---------|-----------|-----------------|------------------------------|--------------|
-| 201     | 1       | image     | have a nice day | 31-DEC-19 01.19.55.103225 AM |  -           |
-| 202     | 2       | video     | happy morning   | 31-DEC-19 01.21.03.888304 AM |  -           |
+| post_id | user_id | post_type | caption         | date_created                 | date_updated                            |
+|---------|---------|-----------|-----------------|------------------------------|-----------------------------------------|
+| 201     | 1       | image     | hello           | 31-DEC-19 01.19.55.103225 AM |  31-DEC-19 03.44.10.320435 AM           |
+| 202     | 2       | video     | happy morning   | 31-DEC-19 01.21.03.888304 AM |  -                                      |
 
