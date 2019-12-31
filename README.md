@@ -33,6 +33,16 @@ insert into user_list(user_id,user_name,email,age,gender,dob,created_date,status
 
 select * from user_list;
 ```
+### table1
+
+* user_list
+
+| user_id | user_name | email           | age | gender | dob       | created_date                 | status     |
+|---------|-----------|-----------------|-----|--------|-----------|------------------------------|------------|
+| 1       | soundarya | sound@gmail.com | 21  | female | 28-DEC-98 | 30-DEC-19 11.24.17.955164 PM | i_am_sound |
+| 2       | aishu     | aishu@gmail.com | 20  | female | 31-DEC-98 | 30-DEC-19 11.24.17.959820 PM | i_am_ice   |
+| 3       | mala      | mala@gmail.com  | 19  | female | 27-MAR-98 | 30-DEC-19 11.24.17.963878 PM | i_am_mala  |
+
 ### Feature 2: List the User's friends request
 ```sql
 create table friend_request( 
