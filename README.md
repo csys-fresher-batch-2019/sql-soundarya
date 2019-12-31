@@ -61,8 +61,6 @@ insert into friend_request (user1_id,user2_id,current_status,action_performed_by
 
 insert into friend_request (user1_id,user2_id,current_status,action_performed_by) values (1,2,'blocked',1);
 
-insert into friend_request (user1_id,user2_id,current_status,action_performed_by) values (3,2,'accepted',3);
-
 select * from friend_request where (user1_id = 1 or user2_id = 1) and current_status = 'accepted';
 ```
 ### table 2
