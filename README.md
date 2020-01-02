@@ -48,13 +48,13 @@ select * from user_list;
 ### table1
 
 * user_list
-| user_id | user_name    | email            | age | gender | dob      | city    | country | created_date                   | status     |
-|---------|--------------|------------------|-----|--------|----------|---------|---------|--------------------------------|------------|
-| 1       | soundarya    | sound@gmail.com  | 21  | female | 28-12-98 | madurai | India   | 02-01-20 03:20:25.963000000 PM | i_am_sound |
-| 2       | aishu        | aishu@gmail.com  | 21  | female | 31-12-98 | Delhi   | India   | 02-01-20 03:20:25.969000000 PM | i_am_ice   |
-| 3       | mala         | mala@gmail.com   | 20  | female | 27-03-99 | chennai | India   | 02-01-20 03:20:25.974000000 PM | i_am_mala  |
-| 4       | ajiee        | ajiee@gmail.com  | 18  | male   | 13-01-01 | chennai | India   | 02-01-20 03:20:25.979000000 PM | i_am_ajiee |
-| 5       | chithra mala | chithu@gmail.com | 20  | female | 17-03-99 | madurai | India   | 02-01-20 03:20:25.984000000 PM | iam_chithu |
+| user_id | user_name    | email            | age | gender | dob      | city    | country | created_date                   | status    |
+|---------|--------------|------------------|-----|--------|----------|---------|---------|--------------------------------|-----------|
+| 1       | soundarya    | sound@gmail.com  | 21  | female | 28-12-98 | madurai | India   | 02-01-20 03:20:25.963000000 PM | i_am_sound|
+| 2       | aishu        | aishu@gmail.com  | 21  | female | 31-12-98 | Delhi   | India   | 02-01-20 03:20:25.969000000 PM | i_am_ice  |
+| 3       | mala         | mala@gmail.com   | 20  | female | 27-03-99 | chennai | India   | 02-01-20 03:20:25.974000000 PM | i_am_mala |
+| 4       | ajiee        | ajiee@gmail.com  | 18  | male   | 13-01-01 | chennai | India   | 02-01-20 03:20:25.979000000 PM | i_am_ajiee|
+| 5       | chithra mala | chithu@gmail.com | 20  | female | 17-03-99 | madurai | India   | 02-01-20 03:20:25.984000000 PM | iam_chithu|
 
 ### Feature 2: List the User's friends request
 ```sql
@@ -110,10 +110,10 @@ select * from posts;
 ### Table 3
 * posts
 
-| post_id|email                | post_type | caption         |viewability | date_posted                  | date_updated                |
-|--------|---------------------|-----------|-----------------|------------|------------------------------|-----------------------------|
-| 1      |sound@gmail.com      | image     | hello           |public      | 31-DEC-19 01.19.55.103225 AM | 31-DEC-19 03.44.10.320435 AM|
-| 2      |aishu@gmail.com      | video     | happy morning   |friends     | 31-DEC-19 01.21.03.888304 AM |  -                          |
+| post_id | email           | post_type | caption         | viewability | date_updated                   |
+|---------|-----------------|-----------|-----------------|-------------|--------------------------------|
+| 1       | sound@gmail.com | image     | have a nice day | public      | 02-01-20 03:22:20.221000000 PM |
+| 2       | aishu@gmail.com | video     | happy morning   | friends     | 02-01-20 03:22:20.229000000 PM |
 
 
 ### Feature 4:posting reply comments to the posts
@@ -142,3 +142,86 @@ select * from comments;
 |-------------|-----------------|--------------|
 | 1           | aishu@gmail.com | hai          |
 | 2           | sound@gmail.com | good morning |
+
+
+### Use cases
+
+* update the status and time of the post
+```sql
+update posts set date_posted = current_timestamp,caption='hello' where email='sound@gmail.com';
+```
+| post_id | email           | post_type | caption         | viewability | date_updated                   |
+|---------|-----------------|-----------|-----------------|-------------|--------------------------------|
+| 1       | sound@gmail.com | image     | hello           | public      | 02-01-20 10:05:44.404000000 PM |
+| 2       | aishu@gmail.com | video     | happy morning   | friends     | 02-01-20 03:22:20.229000000 PM |
+
+* display the current status for the user's request
+```sql
+select * from friend_request where (requestor = 'sound@gmail.com') and current_status = 'accepted';
+select * from friend_request where requestor = 'sound@gmail.com';
+```
+| requestor       | acceptor       | current_status |
+|-----------------|----------------|----------------|
+| sound@gmail.com | mala@gmail.com | accepted       |
+
+* searching for the user
+```sql
+select * from user_list where user_name like 'a%';
+```
+| user_id | user_name | email           | age | gender | dob      | city    | country | created_date                   | status     |
+|---------|-----------|-----------------|-----|--------|----------|---------|---------|--------------------------------|------------|
+| 2       | aishu     | aishu@gmail.com | 21  | female | 31-12-98 | Delhi   | India   | 02-01-20 03:20:25.969000000 PM | i_am_ice   |
+| 4       | ajiee     | ajiee@gmail.com | 18  | male   | 13-01-01 | chennai | India   | 02-01-20 03:20:25.979000000 PM | i_am_ajiee |
+
+```sql
+select * from user_list where user_name like '%mala%';
+```
+| user_id | user_name    | email            | age | gender | dob      | city    | country | created_date                   | status    |
+|---------|--------------|------------------|-----|--------|----------|---------|---------|--------------------------------|-----------|
+| 3       | mala         | mala@gmail.com   | 20  | female | 27-03-99 | chennai | India   | 02-01-20 03:20:25.974000000 PM | i_am_mala |
+| 5       | chithra mala | chithu@gmail.com | 20  | female | 17-03-99 | madurai | India   | 02-01-20 03:20:25.984000000 PM | iam_chithu|
+
+* search the user by using their location and user name
+```sql
+select * from user_list where city='madurai';
+```
+| user_id | user_name    | email            | age | gender | dob      | city    | country | created_date                   | status    |
+|---------|--------------|------------------|-----|--------|----------|---------|---------|--------------------------------|-----------|
+| 1       | soundarya    | sound@gmail.com  | 21  | female | 28-12-98 | madurai | India   | 02-01-20 03:20:25.963000000 PM | i_am_sound|
+| 5       | chithra mala | chithu@gmail.com | 20  | female | 17-03-99 | madurai | India   | 02-01-20 03:20:25.984000000 PM | iam_chithu|
+
+* displaying the user name and posted status for the particular user
+```sql
+select u.user_name,p.post_type,p.caption,p.date_posted from user_list u inner join posts p on u.email=p.email;
+```
+| user_name | post_type | caption       | date_posted                    |
+|-----------|-----------|---------------|--------------------------------|
+| soundarya | image     | hello         | 02-01-20 10:05:44.404000000 PM |
+| aishu     | video     | happy morning | 02-01-20 03:22:20.229000000 PM |
+
+* displaying the comments for the posts posted by the users
+```sql
+select u.user_name,p.caption,c.cmts,c.cmt_email from user_list u,posts p,comments c where u.email=p.email
+and p.post_id=c.cmt_post_id;
+```
+| user_name | caption       | cmts         | cmt_email       |
+|-----------|---------------|--------------|-----------------|
+| soundarya | hello         | hai          | aishu@gmail.com |
+| aishu     | happy morning | good morning | sound@gmail.com |
+
+* displaying the no of people posted their posts as public and private
+```sql
+select count(email) as public_posted_count from posts where viewability='public';
+select count(email) as privately_posted_count from posts where viewability='friends';
+```
+
+| public_posted_count || private_posted_count |
+|---------------------||----------------------|
+| 1                   || 1                    |
+
+* delete posts 
+```sql
+delete from posts where post_id=4; 
+```
+
+
