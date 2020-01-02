@@ -133,6 +133,7 @@ select * from comments;
 ```
 ### Table 4
 * comments
+
 | cmt_post_id | cmt_email       | cmts         |
 |-------------|-----------------|--------------|
 | 1           | aishu@gmail.com | hai          |
