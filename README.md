@@ -70,10 +70,10 @@ insert into friend_request (requestor,acceptor,current_status) values ('mala@gma
 
 * friend_request
 
-| requestor               | acceptor              | current_status | action_performed_by |
-|-------------------------|-----------------------|----------------|---------------------|
-| sound@gmail.com         | mala@gmail.com        | accepted       | 3                   |
-| sound@gmail.com         | aishu@gmail.com       | blocked        | 1                   |
+| requestor               | acceptor              | current_status |
+|-------------------------|-----------------------|----------------|
+| sound@gmail.com         | mala@gmail.com        | accepted       |
+| sound@gmail.com         | aishu@gmail.com       | blocked        | 
 
 ### Feature 3:Posts posted by the user
 ```sql
