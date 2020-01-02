@@ -103,7 +103,6 @@ update posts set date_updated = current_timestamp,caption='hello' where email='s
 select * from posts;
 ```
 ### Table 3
-
 * posts
 
 | post_id|email                | post_type | caption         |viewability | date_created                 | date_updated                |
