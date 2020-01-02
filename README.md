@@ -48,6 +48,7 @@ select * from user_list;
 ### table1
 
 * user_list
+
 | user_id | user_name    | email            | age | gender | dob      | city    | country | created_date                   | status    |
 |---------|--------------|------------------|-----|--------|----------|---------|---------|--------------------------------|-----------|
 | 1       | soundarya    | sound@gmail.com  | 21  | female | 28-12-98 | madurai | India   | 02-01-20 03:20:25.963000000 PM | i_am_sound|
@@ -215,9 +216,9 @@ select count(email) as public_posted_count from posts where viewability='public'
 select count(email) as privately_posted_count from posts where viewability='friends';
 ```
 
-| public_posted_count || private_posted_count |
-|---------------------||----------------------|
-| 1                   || 1                    |
+| public_posted_count | private_posted_count |
+|---------------------|----------------------|
+| 1                   | 1                    |
 
 * delete posts 
 ```sql
