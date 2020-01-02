@@ -100,13 +100,40 @@ insert into posts (post_id,email,post_type,caption,viewability,date_created) val
 
 update posts set date_updated = current_timestamp,caption='hello' where email='sound@gmail.com';
 
-select * from posts;```
-### table 3
+select * from posts;
+```
+### Table 3
 
 * posts
 
-| post_id | email              | post_type | caption         |viewability | date_created                 | date_updated                |
-|---------|--------------------|-----------|-----------------|------------|------------------------------|-----------------------------|
-| 1     | sound@gmail.com      | image     | hello           |public      | 31-DEC-19 01.19.55.103225 AM | 31-DEC-19 03.44.10.320435 AM|
-| 2     | aishu@gmail.com      | video     | happy morning   |friends     | 31-DEC-19 01.21.03.888304 AM |  -                          |
+| post_id|email                | post_type | caption         |viewability | date_created                 | date_updated                |
+|--------|---------------------|-----------|-----------------|------------|------------------------------|-----------------------------|
+| 1      |sound@gmail.com      | image     | hello           |public      | 31-DEC-19 01.19.55.103225 AM | 31-DEC-19 03.44.10.320435 AM|
+| 2      |aishu@gmail.com      | video     | happy morning   |friends     | 31-DEC-19 01.21.03.888304 AM |  -                          |
 
+
+### Feature 4:posting reply comments to the posts
+
+```sql
+create table comments (
+cmt_post_id number,
+cmt_email varchar2(40),
+cmts varchar2(100),
+constraint cmt_post_id_fk foreign key (cmt_post_id) references posts (post_id),
+constraint cmt_email_fk foreign key (cmt_email) references user_list(email)
+);
+```
+* Query
+```sql
+insert into comments (cmt_post_id,cmt_email,cmts) values (1,'aishu@gmail.com','hai');
+
+insert into comments (cmt_post_id,cmt_email,cmts) values (2,'sound@gmail.com','good morning');
+
+select * from comments;
+```
+### Table 4
+* comments
+| cmt_post_id | cmt_email       | cmts         |
+|-------------|-----------------|--------------|
+| 1           | aishu@gmail.com | hai          |
+| 2           | sound@gmail.com | good morning |
