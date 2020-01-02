@@ -9,7 +9,7 @@ http://socialmedia.in
 ```sql
 create table user_list (
 user_id number not null,
-user_name varchar2(40) not null,
+user_name varchar2(40) unique,
 email varchar2(40),
 age number not null,
 gender varchar2(10) not null,
