@@ -167,7 +167,7 @@ select email , count(*) as no_of_posts from posts group by email;
 | sound@gmail.com | 1           |
 | aishu@gmail.com | 2           |
 
-* update the status and time of the post
+* edit the post and repost it
 ```sql
 update posts set date_posted = current_timestamp,caption='hello' where email='sound@gmail.com';
 ```
