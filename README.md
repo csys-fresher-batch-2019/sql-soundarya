@@ -9,7 +9,7 @@ http://socialmedia.in
 ```sql
 create table user_list (
 user_id number not null,
-user_name varchar2(40) not null,
+user_name varchar2(40) not null unique,
 email varchar2(40),
 age number not null,
 gender varchar2(10) not null,
@@ -97,6 +97,7 @@ date_posted timestamp not null,
 constraint email_fk foreign key(email) references user_list(email),
 constraint post_type_check check(post_type in('image','video')),
 constraint viewability_check check(viewability in('public','friends'))
+constraint post_id_email_uq unique(post_id,email)
 );
 create sequence post_id_se increment by 1;
 ```
@@ -146,6 +147,25 @@ select * from comments;
 
 
 ### Use cases
+* add new post to the same user
+```sql
+insert into posts (post_id,email,post_type,caption,viewability,date_posted) values (post_id_se.nextval,'aishu@gmail.com','image','happy new year','public',current_timestamp);
+```
+| post_id | email           | post_type | caption        | viewability | date_posted                    |
+|---------|-----------------|-----------|----------------|-------------|--------------------------------|
+| 1       | sound@gmail.com | image     | hello          | public      | 02-01-20 10:05:44.404000000 PM |
+| 2       | aishu@gmail.com | video     | happy morning  | friends     | 02-01-20 03:22:20.229000000 PM |
+| 5       | aishu@gmail.com | image     | happy new year | public      | 03-01-20 05:45:58.163000000 AM |
+
+* no 0f posts posted by a single user
+```sql
+select email , count(*) as no_of_posts from posts where email='aishu@gmail.com';
+select email , count(*) as no_of_posts from posts group by email;
+```
+| email           | no_of_posts |
+|-----------------|-------------|
+| sound@gmail.com | 1           |
+| aishu@gmail.com | 2           |
 
 * update the status and time of the post
 ```sql
