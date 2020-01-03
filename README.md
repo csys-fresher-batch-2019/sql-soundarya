@@ -83,7 +83,7 @@ insert into friend_request (requestor,acceptor,current_status) values ('mala@gma
 | requestor               | acceptor              | current_status |
 |-------------------------|-----------------------|----------------|
 | sound@gmail.com         | mala@gmail.com        | accepted       |
-| sound@gmail.com         | aishu@gmail.com       | blocked        | 
+| sound@gmail.com         | aishu@gmail.com       | rejected       | 
 
 ### Feature 3:Posts posted by the user
 ```sql
@@ -112,7 +112,7 @@ select * from posts;
 ### Table 3
 * posts
 
-| post_id | email           | post_type | caption         | viewability | date_updated                   |
+| post_id | email           | post_type | caption         | viewability | date_posted                    |
 |---------|-----------------|-----------|-----------------|-------------|--------------------------------|
 | 1       | sound@gmail.com | image     | have a nice day | public      | 02-01-20 03:22:20.221000000 PM |
 | 2       | aishu@gmail.com | video     | happy morning   | friends     | 02-01-20 03:22:20.229000000 PM |
