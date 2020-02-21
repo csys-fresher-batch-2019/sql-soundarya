@@ -3,13 +3,13 @@
 http://socialmedia.in
 
 ## Features:
-*  User should able to view all the pepole who are using the social media
+*  Table 1
 
-### Feature 1:List of people using the social media
+### List of people using the social media
 ```sql
 create table user_list (
 user_id number not null,
-user_name varchar2(40) not null unique,
+user_name varchar2(40) not null,
 email varchar2(40),
 age number not null,
 gender varchar2(10) not null,
@@ -17,45 +17,34 @@ dob date ,
 city varchar2(30),
 country varchar2(30) not null,
 created_date timestamp not null, 
-status varchar2(10),
+status varchar2(40),
+user_password varchar2(20) not null,
 constraint email_pk primary key (email),
 constraint age_check check (age>=18)
 );
-create sequence users_id_seq increment by 1;
-```
+create sequence us_id_s increment by 1;
+
+alter table user_list add (
+active_status varchar(20) default 'active',
+constraint active_status_cq check (active_status in('active','inactive')) );
+
+alter table user_list add (profile_pic varchar2(30));
+
 * Query
 ```sql
-insert into user_list(user_id,user_name,email,age,gender,dob,city,country,created_date,status) values 
-(users_id_seq.nextval,'soundarya','sound@gmail.com',21,'female',to_date('28-12-1998','dd-MM-yyyy'),'madurai','India',current_timestamp,'i_am_sound');
-
-
-insert into user_list(user_id,user_name,email,age,gender,dob,city,country,created_date,status) values  
-(users_id_seq.nextval,'aishu','aishu@gmail.com',21,'female',to_date('31-12-1998','dd-MM-yyyy'),'Delhi','India',current_timestamp,'i_am_ice');
-
-insert into user_list(user_id,user_name,email,age,gender,dob,city,country,created_date,status) values  
-(users_id_seq.nextval,'mala','mala@gmail.com',20,'female',to_date('27-03-1999','dd-MM-yyyy'),'chennai','India',current_timestamp,'i_am_mala');
-
-insert into user_list(user_id,user_name,email,age,gender,dob,city,country,created_date,status) values  
-(users_id_seq.nextval,'ajiee','ajiee@gmail.com',18,'male',to_date('13-01-2001','dd-MM-yyyy'),'chennai','India',current_timestamp,'i_am_ajiee');
-
-insert into user_list(user_id,user_name,email,age,gender,dob,city,country,created_date,status) values  
-(users_id_seq.nextval,'chithra mala','chithu@gmail.com',20,'female',to_date('17-03-1999','dd-MM-yyyy'),'madurai','India',current_timestamp,'iam_chithu');
 
 select * from user_list;
 
 
 ```
-### table1
+### user_list
 
-* user_list
+| user_id   | user_name       | email | age    | gender   | dob     | city  | country                        | created_date    | status  | user_password | active_status | profile_pic |
+|-----------|-----------------|-------|--------|----------|---------|-------|--------------------------------|-----------------|---------|---------------|---------------|-------------|
+| soundarya | sound@gmail.com | 21    | female | 28-12-98 | madurai | India | 29-01-20 10:26:00.243000000 AM | i_am_sound      | sound   | active        | simage.jpg    | (null)      |
+| ajiee     | ajiee@gmail.com | 21    | male   | 07-07-98 | madurai | india | 29-01-20 11:56:36.257000000 AM | Thalapathy Mass | aji07   | active        | 7.jpg         | (null)      |
+| aishu     | aishu@gmail.com | 21    | female | 31-12-98 | delhi   | India | 29-01-20 12:06:44.132000000 PM | i_am_ice        | pass123 | active        | (null)        | (null)      | 
 
-| user_id | user_name    | email            | age | gender | dob      | city    | country | created_date                   | status    |
-|---------|--------------|------------------|-----|--------|----------|---------|---------|--------------------------------|-----------|
-| 1       | soundarya    | sound@gmail.com  | 21  | female | 28-12-98 | madurai | India   | 02-01-20 03:20:25.963000000 PM | i_am_sound|
-| 2       | aishu        | aishu@gmail.com  | 21  | female | 31-12-98 | Delhi   | India   | 02-01-20 03:20:25.969000000 PM | i_am_ice  |
-| 3       | mala         | mala@gmail.com   | 20  | female | 27-03-99 | chennai | India   | 02-01-20 03:20:25.974000000 PM | i_am_mala |
-| 4       | ajiee        | ajiee@gmail.com  | 18  | male   | 13-01-01 | chennai | India   | 02-01-20 03:20:25.979000000 PM | i_am_ajiee|
-| 5       | chithra mala | chithu@gmail.com | 20  | female | 17-03-99 | madurai | India   | 02-01-20 03:20:25.984000000 PM | iam_chithu|
 
 ### Feature 2: List the User's friends request
 ```sql
