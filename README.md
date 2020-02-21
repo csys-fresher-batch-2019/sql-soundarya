@@ -1,9 +1,8 @@
-# Simple Social Media
+#  Social Media Application
 
 http://socialmedia.in
 
 ## Features:
-*  Table 1
 
 ### List of people using the social media
 ```sql
@@ -29,6 +28,7 @@ active_status varchar(20) default 'active',
 constraint active_status_cq check (active_status in('active','inactive')) );
 
 alter table user_list add (profile_pic varchar2(30));
+```
 
 * Query
 ```sql
