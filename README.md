@@ -39,11 +39,11 @@ select * from user_list;
 ```
 ### user_list
 
-| user_id   | user_name       | email | age    | gender   | dob     | city  | country                        | created_date    | status  | user_password | active_status | profile_pic |
-|-----------|-----------------|-------|--------|----------|---------|-------|--------------------------------|-----------------|---------|---------------|---------------|-------------|
-| soundarya | sound@gmail.com | 21    | female | 28-12-98 | madurai | India | 29-01-20 10:26:00.243000000 AM | i_am_sound      | sound   | active        | simage.jpg    | (null)      |
-| ajiee     | ajiee@gmail.com | 21    | male   | 07-07-98 | madurai | india | 29-01-20 11:56:36.257000000 AM | Thalapathy Mass | aji07   | active        | 7.jpg         | (null)      |
-| aishu     | aishu@gmail.com | 21    | female | 31-12-98 | delhi   | India | 29-01-20 12:06:44.132000000 PM | i_am_ice        | pass123 | active        | (null)        | (null)      | 
+| user_id | user_name | email           | age | gender | dob      | city    | country | created_date                   | status          | user_password | active_status | profile_pic |
+|---------|-----------|-----------------|-----|--------|----------|---------|---------|--------------------------------|-----------------|---------------|---------------|-------------|
+| 1       | soundarya | sound@gmail.com | 21  | female | 28-12-98 | madurai | India   | 29-01-20 10:26:00.243000000 AM | i_am_sound      | sound         | active        | simage.jpg  |
+| 21      | ajiee     | ajiee@gmail.com | 21  | male   | 07-07-98 | madurai | india   | 29-01-20 11:56:36.257000000 AM | Thalapathy Mass | aji07         | active        | 7.jpg       |
+| 2       | aishu     | aishu@gmail.com | 21  | female | 31-12-98 | delhi   | India   | 29-01-20 12:06:44.132000000 PM | i_am_ice        | pass123       | active        | (null)      |
 
 
 ### Feature 2: List the User's friends request
